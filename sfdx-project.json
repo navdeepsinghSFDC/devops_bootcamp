@@ -1,7 +1,7 @@
 { 
 "packageDirectories" : [ 
     { "path": "force-app", "default": true}, 
-    { "path" : "unpackaged" }, 
+    { "path" : "unpackaged" }
    ],
 "namespace": "", 
 "sfdcLoginUrl" : "https://csg-devops-bootcamp--ndev1.sandbox.my.salesforce.com/", 
