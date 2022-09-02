@@ -42,7 +42,7 @@
 	</types>
 	<types>
         <members>*</members>
-         name>CustomApplication</name>
+        <name>CustomApplication</name>
     </types>
 	<types>
 		<members>*</members>
