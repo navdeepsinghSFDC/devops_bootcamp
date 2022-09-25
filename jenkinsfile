@@ -38,8 +38,8 @@ pipeline {
 						dir ("diff") {
 							sh "npm link"
 									}
-						sh "sfpackage 'origin/test rel_1.0 -p ${API_NUMBER} Deploy"
-						setHasMetadataTypes()
+						sh "sfpackage 'origin/test rel_1.0 -p Deploy"
+						//setHasMetadataTypes()
 
 
 						}
