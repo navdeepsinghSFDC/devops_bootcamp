@@ -2,8 +2,9 @@ pipeline {
     agent any
     environment {
     BRANCH_ENV = "test"
-    }
-    	stages {
+        }
+    tools {nodejs}
+    stages {
 		stage ("Build") {
 			when {
 				anyOf {
@@ -41,11 +42,8 @@ pipeline {
 						dir ("diff") {
 							sh "npm link"
 									}
-						sh "./index.js origin/test origin/rel_1.0 -p Deploy"
-						//sh "sfpackage origin/test origin/rel_1.0 -p Deploy"
-						//setHasMetadataTypes()
-
-
+						sh "sfpackage test rel_1.0  ./Deploy"
+						
 						}
 }
 }
