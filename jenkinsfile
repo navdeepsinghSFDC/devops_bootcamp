@@ -9,8 +9,10 @@ pipeline {
 				anyOf {
 					changeRequest target: "test";
 					changeRequest target: "uat";
+					changeRequest target: "rel_1.0";
 					branch "test";
 					branch "uat"
+					branch "rel_1.0"
 				}
 			}
 			stages {
@@ -18,6 +20,7 @@ pipeline {
 					when {
 						branch "test";
 						branch "uat"
+						branch "rel_1.0"
 					}
 					steps {
 						sh '''
@@ -34,12 +37,9 @@ pipeline {
 	stage("Find delta") {
 					steps {
 						sh "rm -Rf diff"
-						//sh "node --version"
-						//sh "npm --version"
 						sh "git clone https://github.com/nav0229/diff.git"
-						sh "pwd"
 						dir ("diff") {
-							sh "npm link"
+						sh "npm link""}
 						sh" git checkout test"
 						sh "git checkout rel_1.0"
 						sh "./index.js test rel_1.0  ./Deploy"
