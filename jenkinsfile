@@ -39,7 +39,7 @@ pipeline {
 						sh "rm -Rf diff"
 						sh "git clone https://github.com/nav0229/diff.git"
 						dir ("diff") {
-						sh "npm link""}
+						sh "npm link"}
 						sh" git checkout test"
 						sh "git checkout rel_1.0"
 						sh "./index.js test rel_1.0  ./Deploy"
