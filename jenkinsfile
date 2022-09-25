@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+   
     	stages {
 		stage ("Build") {
 			when {
@@ -27,6 +27,19 @@ pipeline {
 
         
     }
+}
+
+	stage("Find delta") {
+					steps {
+						sh "git clone https://github.com/nav0229/nlab-packager.git"
+						dir ("sf-packager") {
+							sh "npm link"
+									}
+						sh "sfpackage 'origin/test rel_1.0 -p ${API_NUMBER} Deploy"
+						setHasMetadataTypes()
+
+
+						}
 }
 }
 }
