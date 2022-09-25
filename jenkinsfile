@@ -1,17 +1,30 @@
 pipeline {
     agent any
 
-    stages {
-        stage ('Everything') {
+    	stages {
+		stage ("Build") {
 			when {
 				anyOf {
-					changeRequest target: 'stg';
-					changeRequest target: 'uat';
-					branch 'stg';
-					branch 'uat'
+					changeRequest target: "test";
+					changeRequest target: "uat";
+					branch "test";
+					branch "uat"
 				}
 			}
-			}
+			stages {
+				stage("Fetch Environment Branches") {
+					when {
+						branch "test";
+						branch "uat"
+					}
+					steps {
+						sh '''
+							git config --add remote.origin.fetch +refs/heads/${BRANCH_ENV}:refs/remotes/origin/${BRANCH_ENV}
+							git fetch --no-tags
+						'''
+					}
+				}
+
         stage('Test') {
             steps {
                 echo 'Testing..'
