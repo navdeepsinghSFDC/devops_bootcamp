@@ -2,11 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
+        	stage ("Build") {
+			when {
+				anyOf {
+					changeRequest target: "test";
+					changeRequest target: "rel_1.0";
+					branch "test";
+					branch "rel_1.0"
+				}
+			}
+			stages {
         stage('Test') {
             steps {
                 echo 'Testing..'
