@@ -40,8 +40,9 @@ pipeline {
 						sh "pwd"
 						dir ("diff") {
 							sh "npm link"
-									}
-						sh "sfpackage test rel_1.0  ./Deploy"
+						sh" git checkout test"
+						sh "git checkout rel_1.0"
+						sh "./index.js test rel_1.0  ./Deploy"
 						
 						}
 }
