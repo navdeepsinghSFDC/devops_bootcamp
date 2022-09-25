@@ -31,7 +31,7 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
-						sh "git clone https://github.com/nav0229/nlab-packager.git"
+						sh "git clone https://github.com/nav0229/diff.git"
 						dir ("sf-packager") {
 							sh "npm link"
 									}
