@@ -41,7 +41,7 @@ pipeline {
 						dir ("diff") {
 							sh "npm link"
 									}
-						sh "index.js origin/test origin/rel_1.0 -p Deploy"
+						sh "./index.js origin/test origin/rel_1.0 -p Deploy"
 						//sh "sfpackage origin/test origin/rel_1.0 -p Deploy"
 						//setHasMetadataTypes()
 
