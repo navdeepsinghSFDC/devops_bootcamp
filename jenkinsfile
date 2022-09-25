@@ -42,7 +42,7 @@ pipeline {
 						sh "npm link"}
 						sh" git checkout test"
 						sh "git checkout rel_1.0"
-						sh "./index.js test rel_1.0  ./Deploy"
+						sh "C:\Softwares\diff\sfpackage test rel_1.0  Deploy"
 						
 						}
 }
