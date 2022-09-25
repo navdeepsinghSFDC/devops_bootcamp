@@ -11,6 +11,7 @@ pipeline {
 					branch 'uat'
 				}
 			}
+			}
         stage('Test') {
             steps {
                 echo 'Testing..'
