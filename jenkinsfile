@@ -31,6 +31,7 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
+						sh "rm -Rf diff"
 						sh "git clone https://github.com/nav0229/diff.git"
 						dir ("sf-packager") {
 							sh "npm link"
