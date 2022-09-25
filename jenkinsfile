@@ -1,9 +1,8 @@
 pipeline {
     agent any
     environment {
-    BRANCH_ENV = test
+    BRANCH_ENV = "test"
     }
-    tools {nodejs "node 16x LTS"}
     	stages {
 		stage ("Build") {
 			when {
