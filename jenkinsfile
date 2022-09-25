@@ -3,7 +3,6 @@ pipeline {
     environment {
     BRANCH_ENV = "test"
         }
-    tools {nodejs}
     stages {
 		stage ("Build") {
 			when {
