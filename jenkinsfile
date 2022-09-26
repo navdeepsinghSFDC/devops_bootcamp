@@ -50,9 +50,10 @@ pipeline {
 }
 	stage("JWT Auth + Validate") {
 					steps {
-						sh "sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://test.salesforce.com"
-						sh "sfdx force:source:deploy -p 'force-app/main/default/objects/Training__c' -u navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c -verbose"
-						
+						sh '''
+						sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://test.salesforce.com
+						sfdx force:source:deploy -p "force-app/main/default/objects/Training__c"@lapi -u navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c -verbose
+						'''
 						}
 }
 
