@@ -1,7 +1,12 @@
 pipeline {
     agent any
     environment {
-    BRANCH_ENV = "test"
+   		 BRANCH_ENV = "test"
+    		GIT_CREDENTIALS_ID="d318b3e0-d03b-40d1-a98f-d13fbdc3a0f5"
+		NODE_EXTRA_CA_CERTS=""
+		SERVER_KEY="Server.key"
+		SFDX_AUDIENCE_URL="https://test.salesforce.com"
+
         }
     stages {
 		stage ("Env Info") {
@@ -23,10 +28,13 @@ pipeline {
 						branch "rel_1.0"
 					}
 					steps {
+						tryLogout()
+						withCredentials([sshUserPrivateKey(credentialsId: SERVER_KEY, keyFileVariable: "JWT_KEY_FILE")]) {
 						sh '''
 							git config --add remote.origin.fetch +refs/heads/${BRANCH_ENV}:refs/remotes/origin/${BRANCH_ENV}
 							git fetch --no-tags
 						'''
+						}
 					}
 				}
 
@@ -56,6 +64,10 @@ pipeline {
 						
 						'''
 						}
+}
+
+def tryLogout() {
+	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
 }
 
 }
