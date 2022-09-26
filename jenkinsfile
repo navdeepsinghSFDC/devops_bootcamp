@@ -4,7 +4,7 @@ pipeline {
     BRANCH_ENV = "test"
         }
     stages {
-		stage ("Build") {
+		stage ("Env Info") {
 			when {
 				anyOf {
 					changeRequest target: "test";
