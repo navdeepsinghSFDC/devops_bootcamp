@@ -10,9 +10,7 @@ pipeline {
 
       		  }
 		  
-	def tryLogout() {
-	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
-			}
+
     	stages {
 		stage ("Env Info") 
 			{
@@ -74,3 +72,6 @@ pipeline {
 
 }
 }
+	def tryLogout() {
+	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
+			}
