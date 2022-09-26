@@ -36,10 +36,10 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
-						//sh "rm -Rf diff"
-						//sh "git clone https://github.com/nav0229/diff.git"
-						//dir ("diff") {
-						//sh "npm link"}
+						sh "rm -Rf diff"
+						sh "git clone https://github.com/nav0229/diff.git"
+						dir ("diff") {
+						sh "npm link"}
 						//sh " git checkout uat"
 						//sh " git checkout rel_1.0"
 						//sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
