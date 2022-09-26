@@ -9,7 +9,11 @@ pipeline {
 		SFDX_AUDIENCE_URL="https://test.salesforce.com"
 
       		  }
-    stages {
+		  
+	def tryLogout() {
+	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
+			}
+    	stages {
 		stage ("Env Info") 
 			{
 			when {
@@ -68,9 +72,5 @@ pipeline {
 						}
 }
 
-}
-def tryLogout() {
-	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
-}
 }
 }
