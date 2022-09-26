@@ -54,9 +54,9 @@ pipeline {
 
 						}
 }
-	stage("Validate") {
+	stage("Validate Dev2") {
 					steps {
-						sh "sfdx force:source:deploy -m /force-app/main/default/objects/Training__c --username navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c
+						sh "sfdx force:source:deploy -m /force-app/main/default/objects/Training__c --username navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c"
 
 						}
 }
