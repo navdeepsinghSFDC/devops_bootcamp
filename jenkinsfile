@@ -53,7 +53,7 @@ pipeline {
 						sh '''
 						sfdx version
 						ls -l C:/certificate/server.key
-						sfdx force:auth:logout --targetusername navdeep.singh@salesforce.com.csgdevops.ndev2 -p
+						sfdx auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p
 						sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://test.salesforce.com;
 						
 						'''
