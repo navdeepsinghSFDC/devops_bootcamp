@@ -41,7 +41,7 @@ pipeline {
 						dir ("diff") {
 						sh "npm link"}
 						sh "npm install -g diff"
-						sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
+						//sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
 						
 						}
 }
