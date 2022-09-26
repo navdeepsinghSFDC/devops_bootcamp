@@ -16,7 +16,7 @@ pipeline {
 				}
 			}
 			stages {
-				stage("Fetch Environment Branches") {
+				stage("Fetch Branches") {
 					when {
 						branch "test";
 						branch "uat"
@@ -36,10 +36,10 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
-						sh "rm -Rf diff"
-						sh "git clone https://github.com/nav0229/diff.git"
-						dir ("diff") {
-						sh "npm link"}
+						//sh "rm -Rf diff"
+						//sh "git clone https://github.com/nav0229/diff.git"
+						//dir ("diff") {
+						//sh "npm link"}
 						//sh " git checkout uat"
 						//sh " git checkout rel_1.0"
 						//sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
@@ -51,7 +51,7 @@ pipeline {
 	stage("JWT Auth + Validate") {
 					steps {
 						sh "sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://test.salesforce.com"
-						//sh "sfdx force:source:deploy -p "force-app/main/default/objects/Training__c" -u navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c"
+						sh "sfdx force:source:deploy -p "force-app/main/default/objects/Training__c" -u navdeep.singh@salesforce.com.csgdevops.ndev2 -w 5 -c -verbose"
 						
 						}
 }
