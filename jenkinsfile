@@ -32,13 +32,12 @@ pipeline {
 						branch "rel_1.0"
 					}
 					steps {
-						tryLogout()
-						withCredentials([sshUserPrivateKey(credentialsId: SERVER_KEY, keyFileVariable: "JWT_KEY_FILE")]) {
+						
 						sh '''
 							git config --add remote.origin.fetch +refs/heads/${BRANCH_ENV}:refs/remotes/origin/${BRANCH_ENV}
 							git fetch --no-tags
 						'''
-						}
+						
 					}
 				}
 
@@ -62,16 +61,21 @@ pipeline {
 }
 	stage("JWT Auth + Validate") {
 					steps {
+						
+						tryLogout()
+						withCredentials([sshUserPrivateKey(credentialsId: SERVER_KEY, keyFileVariable: "JWT_KEY_FILE")]) 
+						{
 						sh '''
 						sfdx version
 						sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com
 						
 						'''
 						}
+						}
 }
 
 }
 }
 	def tryLogout() {
-	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p "
+	sh "sfdx force:auth:logout -u navdeep.singh@salesforce.com.csgdevops.ndev2 -p || true"
 			}
