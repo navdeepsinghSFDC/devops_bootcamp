@@ -48,15 +48,13 @@ pipeline {
 	stage("Find delta") {
 					steps {
 						sh "rm -Rf diff"
-						sh "git clone https://github.com/nav0229/diff.git"
-						dir ("diff") {
+						sh "git clone https://github.com/dlively1/sf-packager.git"
+						dir ("sf-packager") {
 						sh "npm link"}
-						//sh " git checkout uat"
-						//sh " git checkout rel_1.0"
+						sh " git checkout test"
+						sh " git checkout rel_1.0"
 						sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
-						sh "npm install -g /c/Softwares/sfpackager"
-						sh " /c/Softwares/sfpackager/index.js uat rel_1.0 ./deploy"
-						
+												
 						}
 }
 	stage("JWT Auth + Validate") {
